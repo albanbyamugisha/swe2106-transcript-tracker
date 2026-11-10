@@ -6,6 +6,18 @@ Students submit transcript requests and track them by reference. Registrar staff
 
 [Submission files and group roster](Submission.md) · [Architecture and page design](design/Design.md) · [Interface mockups](design/Mockups.html)
 
+## Group A members
+
+- Byamugisha Alban
+- Akisimire Timothy
+- Odongo Emmanuel Bilal
+- Mumbere Edwin
+- Tibamanya Davis
+- Asuma Kadde Kevin
+- Ocero Brian
+- Nsubuga Francis
+- Arusio Simon Peter
+
 ## Local setup
 
 Use Node.js 22.13 or later. In this directory run:
