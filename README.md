@@ -40,6 +40,8 @@ Open `data/registrar.sqlite` in a SQLite viewer to see the tables. SQLite manage
 | Second student | student2@example.test | TranscriptDemo!26 |
 | Registrar staff | registrar@example.test | TranscriptDemo!26 |
 
+Students can choose **Create account**, enter their name, email and password, then sign in with those details. New accounts are saved in SQLite and can sign in again after the server restarts. Public registration creates student accounts only.
+
 ## Postman demonstration
 
 1. Import `postman/Transcript_Tracker.postman_collection.json`.
@@ -56,6 +58,7 @@ Protected endpoints require the bearer token returned by sign-in. The collection
 | Method and endpoint | Access | Result |
 | --- | --- | --- |
 | GET /api/health | Public | 200 and database status |
+| POST /api/auth/register | Public | 201 for a new student account, or 400/409 |
 | POST /api/auth/login | Public | 200 and session token, or 400/401/429 |
 | GET /api/auth/me | Signed in | 200 and account details |
 | POST /api/auth/logout | Signed in | 204 and session revoked |

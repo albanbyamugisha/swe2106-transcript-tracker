@@ -46,6 +46,7 @@ These are views within the single page at `/`. The signed-in account determines 
 | View | Visible content | API calls |
 | --- | --- | --- |
 | Sign in | Heading, labelled email and password fields, sign-in button and status message | POST /api/auth/login |
+| Create account | Name, email and password fields for student registration | POST /api/auth/register |
 | Student workspace | Account heading, request form, personal request list and refresh control | GET /api/auth/me, GET /api/requests, POST /api/requests |
 | Registrar workspace | Account heading, review queue, refresh control and access to request details | GET /api/requests |
 | Request details | Reference, purpose and ordered status history. Registrar accounts can see the applicable status form | GET /api/requests/:id, PATCH /api/requests/:id/status |

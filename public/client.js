@@ -42,6 +42,7 @@ function showLogin() {
   byId('workspace').hidden = true;
   byId('detail').hidden = true;
   byId('signin').hidden = false;
+  byId('register').hidden = true;
   byId('signout').hidden = true;
 }
 
@@ -49,6 +50,7 @@ function showLogin() {
 async function showWorkspace(account) {
   user = account;
   byId('signin').hidden = true;
+  byId('register').hidden = true;
   byId('signout').hidden = false;
   byId('workspace').hidden = false;
   byId('account-name').textContent = account.name;
@@ -126,6 +128,31 @@ function handleForm(id, handler) {
     run(form.querySelector('button'), () => handler(data, form));
   });
 }
+
+byId('open-register').addEventListener('click', () => {
+  notify('');
+  byId('signin').hidden = true;
+  byId('register').hidden = false;
+  byId('register-name').focus();
+});
+
+byId('back-to-login').addEventListener('click', () => {
+  byId('register-form').reset();
+  notify('');
+  showLogin();
+  byId('email').focus();
+});
+
+// Save the account, then let the student sign in with the new password.
+handleForm('register-form', async (data, form) => {
+  const account = await api('/auth/register', 'POST', data);
+  form.reset();
+  showLogin();
+  byId('email').value = account.email;
+  byId('password').value = '';
+  byId('password').focus();
+  notify('Account created. Sign in with your password.');
+});
 
 handleForm('login-form', async (data, form) => {
   const result = await api('/auth/login', 'POST', data);

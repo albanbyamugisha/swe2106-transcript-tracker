@@ -20,7 +20,6 @@
     <section id="signin" class="panel signin">
       <p class="eyebrow">Account access</p>
       <h2>Sign in</h2>
-      <p>Use a student or registrar demonstration account.</p>
       <form id="login-form">
         <label for="email">Email address</label>
         <input id="email" name="email" type="email" autocomplete="username" required>
@@ -28,6 +27,22 @@
         <input id="password" name="password" type="password" autocomplete="current-password" required>
         <button>Sign in</button>
       </form>
+      <p>New student? <button id="open-register" type="button" class="secondary">Create account</button></p>
+    </section>
+    <!-- Students can create an account before signing in. -->
+    <section id="register" class="panel signin" hidden>
+      <h2>Create a student account</h2>
+      <form id="register-form">
+        <label for="register-name">Full name</label>
+        <input id="register-name" name="name" autocomplete="name" maxlength="100" required>
+        <label for="register-email">Email address</label>
+        <input id="register-email" name="email" type="email" autocomplete="username" maxlength="254" required>
+        <label for="register-password">Password</label>
+        <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="256" aria-describedby="register-password-help" required>
+        <p id="register-password-help">Use at least 8 characters.</p>
+        <button>Create account</button>
+      </form>
+      <p>Already registered? <button id="back-to-login" type="button" class="secondary">Back to sign in</button></p>
     </section>
     <!-- The account role decides which workspace controls are shown. -->
     <section id="workspace" hidden>

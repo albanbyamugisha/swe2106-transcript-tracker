@@ -7,6 +7,33 @@ const { hashPassword, matchesPassword, hashToken, authenticate } = require('../a
 const dummyHash = hashPassword(randomBytes(32).toString('hex'));
 // Track failed sign-ins by IP address for one minute.
 const attempts = new Map();
+
+// Public sign-up always creates a student account.
+router.post('/register', (req, res) => {
+  const { name, email, password } = req.body || {};
+  const studentName = typeof name === 'string' ? name.trim() : '';
+  const address = typeof email === 'string' ? email.trim().toLowerCase() : '';
+  if (!studentName || studentName.length > 100 ||
+      address.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address) ||
+      typeof password !== 'string' || password.length < 8 ||
+      password.length > 256 || !password.trim()) {
+    return res.status(400).json({
+      error: 'Enter a name of up to 100 characters, a valid email, and a password of 8 to 256 characters.'
+    });
+  }
+
+  // Let SQLite reject duplicate emails even if two requests arrive together.
+  const result = db.prepare(`
+    INSERT INTO users (name, email, password_hash, role)
+    VALUES (?, ?, ?, 'student')
+    ON CONFLICT(email) DO NOTHING
+  `).run(studentName, address, hashPassword(password));
+  if (!result.changes) {
+    return res.status(409).json({ error: 'An account with that email already exists. Please sign in.' });
+  }
+  res.status(201).json({ email: address });
+});
+
 router.post('/login', (req, res) => {
   const now = Date.now();
   for (const [key, entry] of attempts) {
