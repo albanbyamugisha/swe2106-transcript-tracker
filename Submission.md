@@ -23,6 +23,7 @@
 | Setup and API reference | [README](README.md) |
 | Architecture, data model, sitemap and page structure | [Design specification](design/Design.md) |
 | Editable diagrams | [draw.io file](design/Transcript_Tracker.drawio) |
+| Diagram images | [Architecture PNG](design/architecture.png) · [Sitemap PNG](design/sitemap.png) · [Data model PNG](design/data-model.png) |
 | Browser mockups | [Mockups](design/Mockups.html) |
 | API demonstration | [Postman collection](postman/Transcript_Tracker.postman_collection.json) |
 | API verification | [Newman results](postman/verified-results.json) |

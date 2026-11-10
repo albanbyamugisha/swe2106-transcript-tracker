@@ -58,3 +58,5 @@ The page uses a header, main content, sections and footer. Forms use explicit la
 A student submits a reason containing 5 to 300 characters. The API creates the request and the first history entry, then responds with HTTP 201 and a reference. A registrar can move it from Submitted to Under review, then to Ready for collection or Rejected. A rejection requires a reason. A disallowed transition returns HTTP 409. A student attempting a staff update receives HTTP 403. An unrelated student looking up the request receives HTTP 404.
 
 [Editable diagrams](Transcript_Tracker.drawio) · [Browser mockups](Mockups.html)
+
+[Architecture PNG](architecture.png) · [Sitemap PNG](sitemap.png) · [Data model PNG](data-model.png)
