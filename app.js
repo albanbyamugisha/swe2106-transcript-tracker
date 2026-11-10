@@ -18,6 +18,7 @@ app.get('/api/health', (req, res) => {
 });
 app.use('/api/auth', require('./routes/loginRoute'));
 app.use('/api/requests', require('./routes/requestRoute'));
+// The browser and Postman use the same API routes.
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res) => res.status(404).json({ error: 'Endpoint not found.' }));
 app.use((error, req, res, next) => {

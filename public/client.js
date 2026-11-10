@@ -88,6 +88,7 @@ async function openRequest(id, focus = false) {
       (entry.note ? ' — ' + entry.note : '');
     return item;
   }));
+  // Show only the next steps available for this request. The API checks them again.
   const next = request.status === 'submitted' ? ['under_review']
     : request.status === 'under_review' ? ['ready', 'rejected'] : [];
   byId('status').replaceChildren(...next.map(status => new Option(labels[status], status)));
@@ -97,6 +98,7 @@ async function openRequest(id, focus = false) {
 }
 
 async function run(button, action) {
+  // Prevent a second click while the request is in progress.
   button.disabled = true;
   notify('');
   try {

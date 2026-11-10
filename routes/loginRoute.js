@@ -3,6 +3,7 @@ const { randomBytes } = require('node:crypto');
 const { db } = require('../db');
 const { hashPassword, matchesPassword, hashToken, authenticate } = require('../auth');
 
+// Check a dummy hash for unknown emails so both login failures take similar work.
 const dummyHash = hashPassword(randomBytes(32).toString('hex'));
 const attempts = new Map();
 router.post('/login', (req, res) => {

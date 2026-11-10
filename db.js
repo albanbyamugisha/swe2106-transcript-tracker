@@ -30,6 +30,7 @@ db.exec(`
     status TEXT NOT NULL, note TEXT NOT NULL, changed_at TEXT NOT NULL
   );
 `);
+// Keep related writes together and roll them back if any step fails.
 function transaction(run) {
   db.exec('BEGIN IMMEDIATE');
   try {

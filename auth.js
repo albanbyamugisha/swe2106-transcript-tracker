@@ -10,6 +10,7 @@ function matchesPassword(password, encoded) {
     Buffer.from(encoded)
   );
 }
+// Store a hash so the database never holds a usable session token.
 function hashToken(token) {
   return createHash('sha256').update(token).digest('hex');
 }

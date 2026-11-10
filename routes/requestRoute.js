@@ -3,6 +3,7 @@ const { randomUUID } = require('node:crypto');
 const { db, transaction } = require('../db');
 const { authenticate, requireRole } = require('../auth');
 
+// Ready and rejected requests have no further status changes.
 const transitions = {
   submitted: ['under_review'],
   under_review: ['ready', 'rejected'],
@@ -40,6 +41,7 @@ router.post('/', requireRole('student'), (req, res) => {
 
 router.get('/:id', (req, res) => {
   const request = find.get(req.params.id);
+  // Use the same response for missing requests and requests owned by another student.
   if (!request || (req.user.role !== 'staff' && request.student_id !== req.user.id)) {
     return res.status(404).json({ error: 'Request not found.' });
   }
@@ -60,6 +62,7 @@ router.patch('/:id/status', requireRole('staff'), (req, res) => {
   if (status === 'rejected' && !note.trim()) {
     return res.status(400).json({ error: 'Provide a reason for rejection.' });
   }
+  // Read the current status and write its history in the same transaction.
   const result = transaction(() => {
     const request = find.get(req.params.id);
     if (!request) return { code: 404, error: 'Request not found.' };
