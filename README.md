@@ -8,15 +8,17 @@ Students submit transcript requests and track them by reference. Registrar staff
 
 ## Group A members
 
-- Byamugisha Alban
-- Akisimire Timothy
-- Odongo Emmanuel Bilal
-- Mumbere Edwin
-- Tibamanya Davis
-- Asuma Kadde Kevin
-- Ocero Brian
-- Nsubuga Francis
-- Arusio Simon Peter
+| Group member | Registration number |
+| --- | --- |
+| Byamugisha Alban | 2025/BSE/062/PS |
+| Akisimire Timothy | 2025/BSE/031/PS |
+| Odongo Emmanuel Bilal | 2025/BSE/142/PS |
+| Mumbere Edwin | 2025/BSE/112/PS |
+| Tibamanya Davis | 2025/BSE/172/PS |
+| Asuma Kadde Kevin | 2025/BSE/045/PS |
+| Ocero Brian | 2025/BSE/141/PS |
+| Nsubuga Francis | 2025/BSE/243/PS |
+| Arusio Simon Peter | 2025/BSE/041/PS |
 
 ## Local setup
 
