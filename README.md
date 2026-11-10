@@ -42,12 +42,14 @@ Open `data/registrar.sqlite` in a SQLite viewer to see the tables. SQLite manage
 
 ## Postman demonstration
 
-1. Import `postman/Transcript_Tracker.postman_collection.json`.
+1. Start the server with `npm start`. In Postman Desktop, import `postman/Transcript_Tracker.postman_collection.json`.
 2. Check the collection's `baseUrl` variable. The default is http://127.0.0.1:3002.
-3. Run the collection in order. The login requests store bearer tokens and the creation request stores the request reference for subsequent calls.
+3. Select the collection and click **Run**. Keep all 18 requests selected in their original order, choose one iteration, and start the run. The login requests save the session tokens and the submission saves the request reference for the later calls.
 4. For a short live demo, show requests 04–07, 10, 12–13 and 15–16. Run them in that order. Sign in as Alex Kato in the browser and refresh My requests to show the same request and its history.
 
 The collection includes successful, unauthenticated, unauthorized, invalid, conflicting and cross-account requests. It creates a new fictional request on each run.
+
+The runner should show **22 passed, 0 failed, and 0 errors**. The expected `400`, `401`, `403`, `404`, and `409` responses count as passes when the API rejects the corresponding invalid request.
 
 ## API
 
