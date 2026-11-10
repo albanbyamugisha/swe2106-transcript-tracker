@@ -9,6 +9,8 @@ const labels = {
 let token = sessionStorage.getItem('registrar-token');
 let user;
 let selectedId;
+let updatesTimer;
+let latestUpdateId;
 
 // Show feedback above the forms.
 function notify(message, isError = false) {
@@ -20,14 +22,15 @@ function notify(message, isError = false) {
 
 // Send API requests and attach the token when the user is signed in.
 async function api(path, method = 'GET', body) {
+  const session = token;
   const headers = {};
-  if (token) headers.Authorization = 'Bearer ' + token;
+  if (session) headers.Authorization = 'Bearer ' + session;
   if (body) headers['Content-Type'] = 'application/json';
   const response = await fetch('/api' + path, { method, headers, body: body && JSON.stringify(body) });
   if (response.status === 204) return null;
   const result = await response.json();
   if (!response.ok) {
-    if (response.status === 401 && path !== '/auth/login') showLogin();
+    if (response.status === 401 && token === session && path !== '/auth/login') showLogin();
     throw new Error(result.error || 'Request failed.');
   }
   return result;
@@ -35,6 +38,11 @@ async function api(path, method = 'GET', body) {
 
 // Clear the session from the browser and show the sign-in form.
 function showLogin() {
+  clearInterval(updatesTimer);
+  latestUpdateId = undefined;
+  byId('updates-panel').hidden = true;
+  byId('updates-list').replaceChildren();
+  byId('updates-announcement').textContent = '';
   token = null;
   user = null;
   selectedId = null;
@@ -58,6 +66,34 @@ async function showWorkspace(account) {
   byId('create-panel').hidden = account.role !== 'student';
   byId('queue-title').textContent = account.role === 'student' ? 'My requests' : 'Review queue';
   await loadRequests();
+  if (user === account && account.role === 'student') {
+    // Refresh notifications while this student stays signed in.
+    const refreshUpdates = () => loadUpdates().catch(() => {
+      // Keep the last updates on screen and try again on the next refresh.
+    });
+    refreshUpdates();
+    updatesTimer = setInterval(refreshUpdates, 10000);
+  }
+}
+
+// Show new status changes and the notes the registrar saved with them.
+async function loadUpdates() {
+  const session = token;
+  const { updates } = await api('/requests/updates');
+  if (token !== session || !updates.length || updates[0].id <= (latestUpdateId ?? 0)) return;
+  const count = updates.filter(update => update.id > (latestUpdateId ?? 0)).length;
+  latestUpdateId = updates[0].id;
+  byId('updates-list').replaceChildren(...updates.map(update => {
+    const item = document.createElement('li');
+    const date = new Date(update.changed_at).toLocaleString();
+    item.textContent = labels[update.status] + ' · ' + update.purpose + ' · ' +
+      update.request_id + ' · ' + date + (update.note ? ' · Note: ' + update.note : '');
+    return item;
+  }));
+  byId('updates-panel').hidden = false;
+  byId('updates-announcement').textContent = count === 1
+    ? 'You have a registrar update.'
+    : 'You have ' + count + ' registrar updates.';
 }
 
 // Refresh the list using the records returned by the API.

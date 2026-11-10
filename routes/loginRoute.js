@@ -14,11 +14,11 @@ router.post('/register', (req, res) => {
   const studentName = typeof name === 'string' ? name.trim() : '';
   const address = typeof email === 'string' ? email.trim().toLowerCase() : '';
   if (!studentName || studentName.length > 100 ||
-      address.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address) ||
+      address.length > 254 || !/^[^\s@]+@std\.must\.ac\.ug$/.test(address) ||
       typeof password !== 'string' || password.length < 8 ||
       password.length > 256 || !password.trim()) {
     return res.status(400).json({
-      error: 'Enter a name of up to 100 characters, a valid email, and a password of 8 to 256 characters.'
+      error: 'Enter a name of up to 100 characters, an @std.must.ac.ug email, and a password of 8 to 256 characters.'
     });
   }
 

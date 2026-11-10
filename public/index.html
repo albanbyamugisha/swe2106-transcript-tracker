@@ -35,8 +35,8 @@
       <form id="register-form">
         <label for="register-name">Full name</label>
         <input id="register-name" name="name" autocomplete="name" maxlength="100" required>
-        <label for="register-email">Email address</label>
-        <input id="register-email" name="email" type="email" autocomplete="username" maxlength="254" required>
+        <label for="register-email">Student email address</label>
+        <input id="register-email" name="email" type="email" autocomplete="username" maxlength="254" placeholder="name@std.must.ac.ug" required>
         <label for="register-password">Password</label>
         <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="256" aria-describedby="register-password-help" required>
         <p id="register-password-help">Use at least 8 characters.</p>
@@ -47,6 +47,12 @@
     <!-- The account role decides which workspace controls are shown. -->
     <section id="workspace" hidden>
       <div class="welcome"><p class="eyebrow" id="account-role"></p><h2 id="account-name"></h2></div>
+      <!-- Show saved updates when the student returns or while the dashboard is open. -->
+      <section id="updates-panel" class="panel" hidden>
+        <h2>Registrar notifications</h2>
+        <p id="updates-announcement" role="status"></p>
+        <ul id="updates-list" class="updates-list"></ul>
+      </section>
       <div class="layout">
         <section class="panel" id="create-panel" hidden>
           <h2>New request</h2>

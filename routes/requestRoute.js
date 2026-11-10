@@ -42,6 +42,18 @@ router.post('/', requireRole('student'), (req, res) => {
   res.location('/api/requests/' + id).status(201).json({ request: find.get(id) });
 });
 
+// Use the saved review history to notify only the student who owns the request.
+router.get('/updates', requireRole('student'), (req, res) => {
+  const updates = db.prepare(`
+    SELECT h.id, h.request_id, h.status, h.note, h.changed_at, r.purpose
+    FROM history h JOIN requests r ON r.id = h.request_id
+    WHERE r.student_id = ? AND h.status <> 'submitted'
+    ORDER BY h.id DESC
+    LIMIT 20
+  `).all(req.user.id);
+  res.json({ updates });
+});
+
 // Return the request and its history in the order changes were made.
 router.get('/:id', (req, res) => {
   const request = find.get(req.params.id);

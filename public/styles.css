@@ -21,6 +21,9 @@ main.shell { min-height: 58vh; padding-top: 26px; padding-bottom: 30px; }
 .layout { display: flex; flex-wrap: wrap; gap: 16px; align-items: start; }
 .layout > section { flex: 1 1 320px; min-width: 0; }
 .welcome { margin-bottom: 18px; }
+#updates-panel { margin-bottom: 16px; overflow-wrap: anywhere; }
+.updates-list { margin-bottom: 0; }
+.updates-list li + li { margin-top: 10px; }
 .detail { margin-top: 16px; overflow-wrap: anywhere; }
 /* Use the same styling for fields and buttons across the forms. */
 label { display: block; margin-top: 14px; font-weight: 650; }

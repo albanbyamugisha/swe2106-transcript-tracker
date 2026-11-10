@@ -36,31 +36,35 @@ Open `data/registrar.sqlite` in a SQLite viewer to see the tables. SQLite manage
 
 | Role | Email | Demonstration password |
 | --- | --- | --- |
-| Student | student@example.test | TranscriptDemo!26 |
-| Second student | student2@example.test | TranscriptDemo!26 |
-| Registrar staff | registrar@example.test | TranscriptDemo!26 |
+| Student | alex.kato@std.must.ac.ug | TranscriptDemo!26 |
+| Second student | mary.auma@std.must.ac.ug | TranscriptDemo!26 |
+| Registrar staff | registrar@must.ac.ug | TranscriptDemo!26 |
+
+These are local demo sign-ins. Run `npm run seed` after updating an existing copy to switch the original demo accounts to the new addresses and keep their request history.
 
 ## App screens
 
 | Screen | How to open it |
 | --- | --- |
 | Sign in | Open http://127.0.0.1:3002 or click **Sign out** from a dashboard. |
-| Create account | Click **Create account** on the sign-in screen. Enter a name, email and password to register as a student. |
-| Student dashboard | Sign in with a student demo account or a student account you created. Use **New request** and **My requests** to submit and track requests. |
+| Create account | Click **Create account** on the sign-in screen. Enter a name, an `@std.must.ac.ug` email and a password. |
+| Student dashboard | Use **New request** and **My requests** to submit and track requests. **Registrar notifications** shows recent status changes and any review notes. |
 | Registrar dashboard | Sign in with the registrar demo account. Open a request from the **Review queue** to see its history and available status updates. |
 
 Both dashboards show a **Request details** panel when you select a request. New student accounts are saved in SQLite and can sign in again after the server restarts.
+
+Notifications appear in the student dashboard after the registrar saves a status change. The dashboard checks for updates every 10 seconds and shows the 20 most recent changes on sign-in, including updates made while the student was away. Older updates remain in the request history.
 
 ### Open the registrar dashboard
 
 1. Run `npm run seed` if the demo accounts have not been created, then start the server with `npm start` if it is stopped.
 2. Open http://127.0.0.1:3002. If you are signed in as a student, click **Sign out**.
-3. Sign in with `registrar@example.test` and `TranscriptDemo!26`.
+3. Sign in with `registrar@must.ac.ug` and `TranscriptDemo!26`.
 4. The app opens **Registrar workspace** automatically. Select a request in the **Review queue** to inspect it or update its status.
 
 ## Postman demonstration
 
-1. Import `postman/Transcript_Tracker.postman_collection.json`.
+1. Run `npm run seed`, then import the current `postman/Transcript_Tracker.postman_collection.json` for the updated demo emails.
 2. Check the collection's `baseUrl` variable. The default is http://127.0.0.1:3002.
 3. Run the collection in order. The login requests store bearer tokens and the creation request stores the request reference for subsequent calls.
 4. For a short live demo, show requests 04–07, 10, 12–13 and 15–16. Run them in that order. Sign in as Alex Kato in the browser and refresh My requests to show the same request and its history.
@@ -80,6 +84,7 @@ Protected endpoints require the bearer token returned by sign-in. The collection
 | POST /api/auth/logout | Signed in | 204 and session revoked |
 | GET /api/requests | Signed in | Student's requests or staff queue |
 | POST /api/requests | Student | 201 and request reference, or 400 |
+| GET /api/requests/updates | Student | 200 and recent registrar status changes with notes |
 | GET /api/requests/:id | Owner or staff | 200 and status history, or 404 |
 | PATCH /api/requests/:id/status | Staff | 200, 400, 404 or 409 |
 

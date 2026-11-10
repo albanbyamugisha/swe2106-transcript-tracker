@@ -83,7 +83,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"email\": \"student@example.test\",\n  \"password\": \"incorrect\"\n}",
+          "raw": "{\n  \"email\": \"alex.kato@std.must.ac.ug\",\n  \"password\": \"incorrect\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -116,7 +116,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"email\": \"student@example.test\",\n  \"password\": \"{{demoPassword}}\"\n}",
+          "raw": "{\n  \"email\": \"alex.kato@std.must.ac.ug\",\n  \"password\": \"{{demoPassword}}\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -263,7 +263,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"email\": \"student2@example.test\",\n  \"password\": \"{{demoPassword}}\"\n}",
+          "raw": "{\n  \"email\": \"mary.auma@std.must.ac.ug\",\n  \"password\": \"{{demoPassword}}\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -321,7 +321,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"email\": \"registrar@example.test\",\n  \"password\": \"{{demoPassword}}\"\n}",
+          "raw": "{\n  \"email\": \"registrar@must.ac.ug\",\n  \"password\": \"{{demoPassword}}\"\n}",
           "options": {
             "raw": {
               "language": "json"
