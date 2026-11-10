@@ -1,3 +1,4 @@
+/* Set the default colours and font for the site. */
 :root {
   color-scheme: light;
   font-family: system-ui, sans-serif;
@@ -16,10 +17,12 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
 main.shell { min-height: 58vh; padding-top: 26px; padding-bottom: 30px; }
 .panel { background: white; border: 1px solid #d1dfda; border-radius: 14px; padding: 22px; }
 .signin { max-width: 470px; margin: 15px auto; }
+/* Put the panels side by side when there is enough space. */
 .layout { display: flex; flex-wrap: wrap; gap: 16px; align-items: start; }
 .layout > section { flex: 1 1 320px; min-width: 0; }
 .welcome { margin-bottom: 18px; }
 .detail { margin-top: 16px; overflow-wrap: anywhere; }
+/* Use the same styling for fields and buttons across the forms. */
 label { display: block; margin-top: 14px; font-weight: 650; }
 input, textarea, select, button { font: inherit; }
 input, textarea, select {
@@ -31,6 +34,7 @@ form button { margin-top: 14px; }
 button:disabled { opacity: .55; cursor: wait; }
 .secondary { background: #e4f0eb; color: #143b35; }
 :focus-visible { outline: 3px solid #c97511; outline-offset: 3px; }
+/* Style the request list and the feedback shown above it. */
 #request-list { padding: 0; margin: 0; list-style: none; }
 #request-list li { padding: 12px 0; border-top: 1px solid #d1dfda; overflow-wrap: anywhere; }
 .request-link { width: 100%; text-align: left; white-space: normal; }

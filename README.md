@@ -18,6 +18,8 @@ npm start
 
 Open http://127.0.0.1:3002. `npm run seed` adds fictional accounts without clearing existing requests. The database is created at `data/registrar.sqlite`. Keep that file between restarts to retain requests. Use `DB_FILE` to choose a different database file and `PORT` to change the port. Node 22 may emit an experimental SQLite warning.
 
+Open `data/registrar.sqlite` in a SQLite viewer to see the tables. SQLite manages the `-wal` and `-shm` companion files while the database is open. The WAL stores changes before SQLite copies them into the main file. The SHM file helps SQLite coordinate access. The table definitions are in `db.js`.
+
 | Role | Email | Demonstration password |
 | --- | --- | --- |
 | Student | student@example.test | TranscriptDemo!26 |
@@ -57,7 +59,8 @@ Status flow: Submitted → Under review → Ready or Rejected. Rejection require
 - `routes/` contains login and transcript request routes.
 - `db.js` defines the schema and transaction handling.
 - `auth.js` handles password verification, bearer sessions and role checks.
-- `public/` contains the browser interface.
+- `public/index.html` is the working page that Express serves. It uses `public/client.js` to send requests to the API.
+- `design/Mockups.html` shows the sign-in, student and registrar designs with fixed sample records.
 - `postman/` contains the collection and sample requests.
 
 ## Demonstration environment

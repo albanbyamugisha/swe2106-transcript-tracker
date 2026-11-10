@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.deck-build": true,
+    "**/.postman": true,
+    "postman/collections": true,
+    "postman/globals": true,
+    "**/*.sqlite-shm": true,
+    "**/*.sqlite-wal": true
+  }
+}

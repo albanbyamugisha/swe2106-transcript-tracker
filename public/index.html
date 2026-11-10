@@ -16,6 +16,7 @@
   </header>
   <main class="shell">
     <p id="message" role="status" aria-live="polite" hidden></p>
+    <!-- Sign-in screen shown when the page first opens. -->
     <section id="signin" class="panel signin">
       <p class="eyebrow">Account access</p>
       <h2>Sign in</h2>
@@ -28,6 +29,7 @@
         <button>Sign in</button>
       </form>
     </section>
+    <!-- The account role decides which workspace controls are shown. -->
     <section id="workspace" hidden>
       <div class="welcome"><p class="eyebrow" id="account-role"></p><h2 id="account-name"></h2></div>
       <div class="layout">
@@ -44,6 +46,7 @@
           <ul id="request-list"></ul>
         </section>
       </div>
+      <!-- Show the selected request here, with review controls for staff. -->
       <section class="panel detail" id="detail" hidden aria-labelledby="detail-title">
         <h2 id="detail-title" tabindex="-1">Request details</h2>
         <p id="reference"></p>

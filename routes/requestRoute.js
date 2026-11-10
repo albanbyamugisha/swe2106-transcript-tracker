@@ -16,8 +16,10 @@ const find = db.prepare(select + ' WHERE r.id = ?');
 const addHistory = db.prepare(
   'INSERT INTO history (request_id, actor_id, status, note, changed_at) VALUES (?, ?, ?, ?, ?)'
 );
+// Require a valid session for every request route.
 router.use(authenticate);
 
+// Staff see the whole queue. Students see their own requests.
 router.get('/', (req, res) => {
   const requests = req.user.role === 'staff'
     ? db.prepare(select + ' ORDER BY r.created_at DESC').all()
@@ -25,6 +27,7 @@ router.get('/', (req, res) => {
   res.json({ requests });
 });
 
+// Check the reason and save the new request with its first history entry.
 router.post('/', requireRole('student'), (req, res) => {
   const purpose = typeof req.body?.purpose === 'string' ? req.body.purpose.trim() : '';
   if (purpose.length < 5 || purpose.length > 300) {
@@ -39,6 +42,7 @@ router.post('/', requireRole('student'), (req, res) => {
   res.location('/api/requests/' + id).status(201).json({ request: find.get(id) });
 });
 
+// Return the request and its history in the order changes were made.
 router.get('/:id', (req, res) => {
   const request = find.get(req.params.id);
   // Use the same response for missing requests and requests owned by another student.
@@ -53,6 +57,7 @@ router.get('/:id', (req, res) => {
   res.json({ request, history });
 });
 
+// Staff can update a request by following the allowed status steps.
 router.patch('/:id/status', requireRole('staff'), (req, res) => {
   const { status, note = '' } = req.body || {};
   if (typeof status !== 'string' || !['under_review', 'ready', 'rejected'].includes(status) ||

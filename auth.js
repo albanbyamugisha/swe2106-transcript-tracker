@@ -1,9 +1,11 @@
 const { createHash, randomBytes, scryptSync, timingSafeEqual } = require('node:crypto');
 const { db } = require('./db');
 
+// Hash the password with a random salt before saving it.
 function hashPassword(password, salt = randomBytes(16).toString('hex')) {
   return salt + ':' + scryptSync(password, salt, 64).toString('hex');
 }
+// Use the saved salt to check a password at login.
 function matchesPassword(password, encoded) {
   return timingSafeEqual(
     Buffer.from(hashPassword(password, encoded.split(':')[0])),
@@ -14,6 +16,7 @@ function matchesPassword(password, encoded) {
 function hashToken(token) {
   return createHash('sha256').update(token).digest('hex');
 }
+// Look up the bearer token and check that the session is still valid.
 function authenticate(req, res, next) {
   const match = /^Bearer ([a-f0-9]{64})$/.exec(req.get('Authorization') || '');
   const tokenHash = match && hashToken(match[1]);
@@ -27,6 +30,7 @@ function authenticate(req, res, next) {
   req.tokenHash = tokenHash;
   next();
 }
+// Check that the signed-in account has the role required by the route.
 function requireRole(role) {
   return (req, res, next) => {
     if (req.user.role !== role) return res.status(403).json({ error: 'Your account cannot perform this action.' });

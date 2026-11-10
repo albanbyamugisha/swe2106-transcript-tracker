@@ -5,10 +5,12 @@ const labels = {
   ready: 'Ready for collection',
   rejected: 'Rejected'
 };
+// Keep the session token when the same tab is refreshed.
 let token = sessionStorage.getItem('registrar-token');
 let user;
 let selectedId;
 
+// Show feedback above the forms.
 function notify(message, isError = false) {
   const box = byId('message');
   box.hidden = !message;
@@ -16,6 +18,7 @@ function notify(message, isError = false) {
   box.classList.toggle('error', isError);
 }
 
+// Send API requests and attach the token when the user is signed in.
 async function api(path, method = 'GET', body) {
   const headers = {};
   if (token) headers.Authorization = 'Bearer ' + token;
@@ -30,6 +33,7 @@ async function api(path, method = 'GET', body) {
   return result;
 }
 
+// Clear the session from the browser and show the sign-in form.
 function showLogin() {
   token = null;
   user = null;
@@ -41,6 +45,7 @@ function showLogin() {
   byId('signout').hidden = true;
 }
 
+// Show the sections that match the account role.
 async function showWorkspace(account) {
   user = account;
   byId('signin').hidden = true;
@@ -53,6 +58,7 @@ async function showWorkspace(account) {
   await loadRequests();
 }
 
+// Refresh the list using the records returned by the API.
 async function loadRequests() {
   const { requests } = await api('/requests');
   const list = byId('request-list');
@@ -75,6 +81,7 @@ async function loadRequests() {
   }
 }
 
+// Show the selected request and its status history.
 async function openRequest(id, focus = false) {
   const { request, history } = await api('/requests/' + id);
   selectedId = request.id;
@@ -110,6 +117,7 @@ async function run(button, action) {
   }
 }
 
+// Send the form through JavaScript without reloading the page.
 function handleForm(id, handler) {
   byId(id).addEventListener('submit', event => {
     event.preventDefault();
@@ -156,6 +164,7 @@ byId('signout').addEventListener('click', event => run(event.currentTarget, asyn
   }
 }));
 
+// Check whether the saved session still works when the page opens.
 if (token) {
   api('/auth/me').then(result => showWorkspace(result.user)).catch(error => notify(error.message, true));
 }

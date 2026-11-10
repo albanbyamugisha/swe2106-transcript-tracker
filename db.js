@@ -2,9 +2,11 @@ const { DatabaseSync } = require('node:sqlite');
 const { mkdirSync } = require('node:fs');
 const { dirname, join } = require('node:path');
 
+// Use the local database file unless a different path was supplied.
 const file = process.env.DB_FILE || join(__dirname, 'data', 'registrar.sqlite');
 mkdirSync(dirname(file), { recursive: true });
 const db = new DatabaseSync(file);
+// Turn on SQLite settings and create any missing tables.
 db.exec(`
   PRAGMA foreign_keys = ON;
   PRAGMA busy_timeout = 5000;
