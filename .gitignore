@@ -2,3 +2,8 @@ node_modules/
 data/
 .env
 .deck-build/
+
+# Local files created when Postman imports the tracked collection.
+/.postman/
+/postman/collections/
+/postman/globals/
