@@ -1,0 +1,211 @@
+{
+  "runner": "Newman",
+  "requests": {
+    "total": 18,
+    "pending": 0,
+    "failed": 0
+  },
+  "assertions": {
+    "total": 22,
+    "pending": 0,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "request": "01 Database health",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "SQLite responds",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "02 Unauthenticated request is denied",
+      "status": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "03 Wrong password is rejected",
+      "status": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "04 Sign in as student",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "05 Reject short purpose",
+      "status": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "06 Submit transcript request",
+      "status": 201,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        },
+        {
+          "name": "Initial status is submitted",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "07 Student cannot change status",
+      "status": 403,
+      "assertions": [
+        {
+          "name": "HTTP 403",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "08 Sign in as another student",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "09 Another student cannot see request",
+      "status": 404,
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "10 Sign in as registrar",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "11 Registrar sees request in queue",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Queue includes new request",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "12 Reject skipped status",
+      "status": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "13 Move request to review",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "14 Require reason for rejection",
+      "status": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "15 Mark transcript ready",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "16 Student sees status history",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Status history is complete",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "17 Sign out as student",
+      "status": 204,
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "request": "18 Revoked session is denied",
+      "status": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

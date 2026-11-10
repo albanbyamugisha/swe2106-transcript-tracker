@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transcript Tracker | Registrar Demonstration</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="client.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="shell masthead">
+      <div><p class="eyebrow">SWE2106 · Registrar project</p><h1>Transcript Tracker</h1></div>
+      <button id="signout" class="secondary" hidden>Sign out</button>
+    </div>
+  </header>
+  <main class="shell">
+    <p id="message" role="status" aria-live="polite" hidden></p>
+    <section id="signin" class="panel signin">
+      <p class="eyebrow">Account access</p>
+      <h2>Sign in</h2>
+      <p>Use a student or registrar demonstration account.</p>
+      <form id="login-form">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button>Sign in</button>
+      </form>
+    </section>
+    <section id="workspace" hidden>
+      <div class="welcome"><p class="eyebrow" id="account-role"></p><h2 id="account-name"></h2></div>
+      <div class="layout">
+        <section class="panel" id="create-panel" hidden>
+          <h2>New request</h2>
+          <form id="request-form">
+            <label for="purpose">Reason for requesting a transcript</label>
+            <textarea id="purpose" name="purpose" minlength="5" maxlength="300" rows="4" required></textarea>
+            <button>Submit request</button>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="section-top"><h2 id="queue-title">Requests</h2><button id="refresh" class="secondary">Refresh</button></div>
+          <ul id="request-list"></ul>
+        </section>
+      </div>
+      <section class="panel detail" id="detail" hidden aria-labelledby="detail-title">
+        <h2 id="detail-title" tabindex="-1">Request details</h2>
+        <p id="reference"></p>
+        <p id="request-purpose"></p>
+        <h3>Status history</h3>
+        <ol id="history"></ol>
+        <form id="review-form" hidden>
+          <label for="status">Next status</label>
+          <select id="status" name="status" required></select>
+          <label for="note">Review note</label>
+          <textarea id="note" name="note" maxlength="300" rows="2"></textarea>
+          <button>Update status</button>
+        </form>
+      </section>
+    </section>
+  </main>
+  <footer class="shell">E-tivity 5 · Fictional demonstration data</footer>
+</body>
+</html>

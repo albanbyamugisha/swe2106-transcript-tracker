@@ -1,0 +1,1 @@
+{"name":"registrar-transcript-tracker","version":"1.0.0","private":true,"engines":{"node":">=22.13"},"scripts":{"start":"node server.js","seed":"node seed.js"},"dependencies":{"express":"5.3.0"}}
