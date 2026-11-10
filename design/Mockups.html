@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transcript Tracker · Interface Mockups</title>
+  <link rel="stylesheet" href="../public/styles.css">
+  <style>
+    .example { margin: 22px 0; }
+    .example h2 { margin-bottom: 16px; }
+    .example section { margin-bottom: 14px; }
+    .frame { padding: 22px; background: #f4f8f6; border: 1px solid #d1dfda; border-radius: 14px; }
+    nav a { display: inline-block; margin: 0 16px 6px 0; color: #17645b; }
+  </style>
+</head>
+<body>
+  <header><div class="shell"><p class="eyebrow">SWE2106 · Interface design</p><h1>Transcript Tracker Mockups</h1></div></header>
+  <main class="shell">
+    <nav aria-label="Mockup sections"><a href="#sign-in">Sign in</a><a href="#student">Student workspace</a><a href="#registrar">Registrar workspace</a></nav>
+    <section class="example frame" id="sign-in">
+      <h2>Sign in</h2>
+      <section class="panel signin">
+        <h3>Account access</h3>
+        <label for="email">Email address</label><input id="email" type="email" value="student@example.test" readonly>
+        <label for="password">Password</label><input id="password" type="password" value="demo-example" readonly>
+        <p><button type="button">Sign in</button></p>
+      </section>
+    </section>
+    <section class="example frame" id="student">
+      <p class="eyebrow">Student workspace</p><h2>Alex Kato</h2>
+      <div class="layout">
+        <section class="panel"><h3>New request</h3>
+          <label for="purpose">Reason for requesting a transcript</label>
+          <textarea id="purpose" readonly rows="3">Graduate programme application</textarea>
+          <p><button type="button">Submit request</button></p>
+        </section>
+        <section class="panel"><div class="section-top"><h3>My requests</h3><button type="button" class="secondary">Refresh</button></div>
+          <p><button type="button" class="request-link secondary">Under review · Graduate programme application</button></p>
+        </section>
+      </div>
+      <section class="panel detail"><h3>Status history</h3><ol><li>Submitted · Alex Kato</li><li>Under review · Registrar Demo</li></ol></section>
+    </section>
+    <section class="example frame" id="registrar">
+      <p class="eyebrow">Registrar workspace</p><h2>Registrar Demo</h2>
+      <section class="panel">
+        <div class="section-top"><h3>Review queue</h3><button type="button" class="secondary">Refresh</button></div>
+        <p><button type="button" class="request-link secondary">Alex Kato · Under review · Graduate programme application</button></p>
+      </section>
+      <section class="panel detail">
+        <h3>Request details</h3><p>Graduate programme application</p>
+        <ol><li>Submitted · Alex Kato</li><li>Under review · Registrar Demo</li></ol>
+        <label for="status">Next status</label><select id="status"><option>Ready for collection</option><option>Rejected</option></select>
+        <label for="note">Review note</label><textarea id="note" readonly rows="2">Ready for collection.</textarea>
+        <p><button type="button">Update status</button></p>
+      </section>
+    </section>
+  </main>
+  <footer class="shell">SWE2106 E-tivity 5 · Interface mockups with fictional records</footer>
+</body>
+</html>

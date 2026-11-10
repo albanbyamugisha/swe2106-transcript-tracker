@@ -1,6 +1,10 @@
 # Transcript Request and Tracking
 
-SWE2106 E-tivity 5. Students submit and track transcript requests. Registrar staff review requests, record decisions, and update the status. The browser and Postman use the same Express API and SQLite database.
+SWE2106 E-tivity 5 · Group A · Mbarara University of Science and Technology
+
+Students submit transcript requests and track them by reference. Registrar staff work through a review queue, record decisions and update each request. Both the browser and Postman connect to the same Express API and SQLite database.
+
+[Submission files and group roster](Submission.md) · [Architecture and page design](design/Design.md) · [Interface mockups](design/Mockups.html)
 
 ## Local setup
 
@@ -25,13 +29,13 @@ Open http://127.0.0.1:3002. `npm run seed` adds fictional accounts without clear
 1. Import `postman/Transcript_Tracker.postman_collection.json`.
 2. Check the collection's `baseUrl` variable. The default is http://127.0.0.1:3002.
 3. Run the collection in order. The login requests store bearer tokens and the creation request stores the request reference for subsequent calls.
-4. For a short live demo, show requests 04–07, 10, 12–13 and 15–16. Run them in that order. Sign in as Alex Kato in the browser and refresh the queue to show the same request and its history.
+4. For a short live demo, show requests 04–07, 10, 12–13 and 15–16. Run them in that order. Sign in as Alex Kato in the browser and refresh My requests to show the same request and its history.
 
 The collection includes successful, unauthenticated, unauthorized, invalid, conflicting and cross-account requests. It creates a new fictional request on each run.
 
 ## API
 
-All protected endpoints require `Authorization: Bearer <token>`. Write requests use `Content-Type: application/json`.
+Protected endpoints require the bearer token returned by sign-in. The collection stores it automatically. Requests with a body use `Content-Type: application/json`.
 
 | Method and endpoint | Access | Result |
 | --- | --- | --- |
@@ -56,6 +60,8 @@ Status flow: Submitted → Under review → Ready or Rejected. Rejection require
 - `public/` contains the browser interface.
 - `postman/` contains the collection and sample requests.
 
-## Demonstration boundary
+## Demonstration environment
 
-This implementation runs with a live local database and fictional accounts. Before any university deployment, replace demonstration accounts, configure HTTPS and persistent hosting, and agree on university identity, access, data retention and backup requirements. The project does not generate transcripts or collect payments. Confirm with the lecturer if “live database” requires remote hosting. The repository must contain genuine contributor pull requests where the team requirement applies.
+The demo runs on one computer with a persistent SQLite database and fictional accounts. It covers requests, review and status history. Transcript generation, payments and integration with the university student information system are outside the project scope.
+
+The recorded Newman run passed 18 requests and 22 assertions. [Verification results](postman/verified-results.json)

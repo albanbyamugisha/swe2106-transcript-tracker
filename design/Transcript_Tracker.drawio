@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Architecture">
+    <mxGraphModel page="1" pageWidth="1120" pageHeight="800" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="browser" value="Student and registrar browsers" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="30" y="40" width="185" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="postman" value="Postman" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="30" y="170" width="185" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="express" value="Express application" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="290" y="100" width="170" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" value="Session and role checks" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="535" y="100" width="185" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="routes" value="Transcript routes" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="790" y="100" width="170" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="SQLite database" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="790" y="245" width="170" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="static" value="HTML, CSS and JavaScript" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="290" y="245" width="170" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" source="browser" target="express" value="HTTP / JSON" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" source="postman" target="express" value="HTTP / JSON" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" source="express" target="auth" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" source="auth" target="routes" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" source="routes" target="db" value="SQL" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" source="express" target="static" value="Serves" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Sitemap">
+    <mxGraphModel page="1" pageWidth="1120" pageHeight="800" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="login" value="Sign in" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="405" y="30" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="student" value="Student workspace" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="175" y="140" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="Registrar workspace" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="610" y="140" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="new" value="New request" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="30" y="265" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mine" value="My requests" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="230" y="265" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="queue" value="Review queue" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="630" y="265" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="details" value="Request details and history" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="210" y="385" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="staffdetails" value="Request details and history" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="610" y="385" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="update" value="Update status" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="630" y="510" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" source="login" target="student" value="Student" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" source="login" target="staff" value="Registrar" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" source="student" target="new" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" source="student" target="mine" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" source="mine" target="details" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" source="staff" target="queue" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" source="queue" target="staffdetails" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" source="staffdetails" target="update" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Data model">
+    <mxGraphModel page="1" pageWidth="1120" pageHeight="800" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="users" value="USERS&lt;br&gt;id (PK)&lt;br&gt;email, name, password_hash, role" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="85" y="90" width="250" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="sessions" value="SESSIONS&lt;br&gt;token_hash (PK)&lt;br&gt;user_id (FK), expires" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="470" y="30" width="250" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="requests" value="REQUESTS&lt;br&gt;id (PK), student_id (FK)&lt;br&gt;purpose, status, created_at" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="85" y="325" width="250" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="history" value="HISTORY&lt;br&gt;id (PK), request_id (FK), actor_id (FK)&lt;br&gt;status, note, changed_at" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5f1eb;strokeColor=#17645b;fontColor=#143d39;fontSize=16;">
+          <mxGeometry x="470" y="325" width="300" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" source="users" target="sessions" value="1 to many" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" source="users" target="requests" value="1 to many" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" source="requests" target="history" value="1 to many" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" source="users" target="history" value="Actor: 1 to many" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#17645b;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

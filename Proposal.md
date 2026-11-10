@@ -1,12 +1,13 @@
 # E-tivity 5 — Transcript Request and Tracking
 
-**Course:** SWE2106 Internet Technologies and Web Design  
-**Institution:** Mbarara University of Science and Technology  
+**Group:** A\
+**Course:** SWE2106 Internet Technologies and Web Design\
+**Institution:** Mbarara University of Science and Technology\
 **Date:** 10 November 2026
 
 ## Problem
 
-Students need a clear way to request an academic transcript and find out whether it is ready. When requests and updates are handled across separate channels, students may have to make repeated enquiries and registrar staff may struggle to find the latest status. This proposal treats that as a workflow risk to validate with the registrar's office.
+Students need a clear way to request an academic transcript and find out whether it is ready. When requests and updates are handled across separate channels, students may have to make repeated enquiries and registrar staff may struggle to find the latest status. The project addresses this workflow risk by giving both groups a shared request record.
 
 ## Users
 
@@ -22,7 +23,7 @@ Students need a clear way to request an academic transcript and find out whether
 
 ## Proposed solution and scope
 
-A student submits a request through a browser form. An Express API validates the input, stores the request, and returns a reference number. Registrar staff review the request and update its status. The student sees the updated status on their dashboard. The prototype will use fictional student records and separate student and staff accounts. The API will enforce who can view or change each request.
+A student submits a request through a browser form. An Express API validates the input, stores the request, and returns a reference number. Registrar staff review the request and update its status. The student sees the updated status on their dashboard. The demonstration uses fictional student records and separate student and staff accounts. The API enforces who can view or change each request.
 
 The initial release covers submission, request tracking, staff review, and status history. Transcript generation, fees, payments, and integration with the university's student information system are outside the initial scope.
 
