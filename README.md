@@ -40,7 +40,23 @@ Open `data/registrar.sqlite` in a SQLite viewer to see the tables. SQLite manage
 | Second student | student2@example.test | TranscriptDemo!26 |
 | Registrar staff | registrar@example.test | TranscriptDemo!26 |
 
-Students can choose **Create account**, enter their name, email and password, then sign in with those details. New accounts are saved in SQLite and can sign in again after the server restarts. Public registration creates student accounts only.
+## App screens
+
+| Screen | How to open it |
+| --- | --- |
+| Sign in | Open http://127.0.0.1:3002 or click **Sign out** from a dashboard. |
+| Create account | Click **Create account** on the sign-in screen. Enter a name, email and password to register as a student. |
+| Student dashboard | Sign in with a student demo account or a student account you created. Use **New request** and **My requests** to submit and track requests. |
+| Registrar dashboard | Sign in with the registrar demo account. Open a request from the **Review queue** to see its history and available status updates. |
+
+Both dashboards show a **Request details** panel when you select a request. New student accounts are saved in SQLite and can sign in again after the server restarts.
+
+### Open the registrar dashboard
+
+1. Run `npm run seed` if the demo accounts have not been created, then start the server with `npm start` if it is stopped.
+2. Open http://127.0.0.1:3002. If you are signed in as a student, click **Sign out**.
+3. Sign in with `registrar@example.test` and `TranscriptDemo!26`.
+4. The app opens **Registrar workspace** automatically. Select a request in the **Review queue** to inspect it or update its status.
 
 ## Postman demonstration
 
