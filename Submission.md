@@ -19,7 +19,7 @@
 
 | Deliverable | File |
 | --- | --- |
-| Project proposal | [Proposal](Proposal.md) |
+| Project proposal | [Final PDF](Group_A_Transcript_Tracker_Proposal.pdf) · [Editable Word document](Group_A_Transcript_Tracker_Proposal.docx) |
 | Setup and API reference | [README](README.md) |
 | Architecture, data model, sitemap and page structure | [Design specification](design/Design.md) |
 | Editable diagrams | [draw.io file](design/Transcript_Tracker.drawio) |
