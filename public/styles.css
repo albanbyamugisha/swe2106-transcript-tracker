@@ -1,46 +1,299 @@
-/* Set the default colours and font for the site. */
+
+/* Set the default colours, font and appearance for the entire site. */
 :root {
   color-scheme: light;
-  font-family: system-ui, sans-serif;
-  color: #172a2b;
-  background: #eef3f1;
+  font-family: Arial, Helvetica, sans-serif;
+
+  --navy-blue: #17365D;
+  --forest-green: #287A55;
+  --dark-green: #205E43;
+  --pale-green: #E8F3ED;
+  --white: #FFFFFF;
+  --light-grey: #F2F4F7;
+  --medium-grey: #D9E0E7;
+  --dark-grey: #465362;
+  --text-black: #263238;
+  --soft-blue: #EAF0F8;
+  --warning-orange: #C97511;
+
+  color: var(--text-black);
+  background: var(--light-grey);
 }
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-body { margin: 0; }
-.shell { max-width: 1100px; margin: auto; padding: 0 22px; }
-header { background: #133c39; color: #fff; padding: 34px 0; }
-.masthead, .section-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-h1, h2, h3 { margin: 0 0 12px; }
-h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
-.eyebrow { margin: 0 0 6px; font-size: .78rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
-main.shell { min-height: 58vh; padding-top: 26px; padding-bottom: 30px; }
-.panel { background: white; border: 1px solid #d1dfda; border-radius: 14px; padding: 22px; }
-.signin { max-width: 470px; margin: 15px auto; }
-/* Put the panels side by side when there is enough space. */
-.layout { display: flex; flex-wrap: wrap; gap: 16px; align-items: start; }
-.layout > section { flex: 1 1 320px; min-width: 0; }
-.welcome { margin-bottom: 18px; }
-#updates-panel { margin-bottom: 16px; overflow-wrap: anywhere; }
-.updates-list { margin-bottom: 0; }
-.updates-list li + li { margin-top: 10px; }
-.detail { margin-top: 16px; overflow-wrap: anywhere; }
-/* Use the same styling for fields and buttons across the forms. */
-label { display: block; margin-top: 14px; font-weight: 650; }
-input, textarea, select, button { font: inherit; }
-input, textarea, select {
-  display: block; width: 100%; margin-top: 5px; padding: 10px;
-  border: 1px solid #8da7a1; border-radius: 7px; background: white; color: inherit;
+
+/* Apply consistent sizing to all elements. */
+* {
+  box-sizing: border-box;
 }
-button { border: 0; border-radius: 7px; background: #17645b; color: white; padding: 9px 14px; cursor: pointer; }
-form button { margin-top: 14px; }
-button:disabled { opacity: .55; cursor: wait; }
-.secondary { background: #e4f0eb; color: #143b35; }
-:focus-visible { outline: 3px solid #c97511; outline-offset: 3px; }
-/* Style the request list and the feedback shown above it. */
-#request-list { padding: 0; margin: 0; list-style: none; }
-#request-list li { padding: 12px 0; border-top: 1px solid #d1dfda; overflow-wrap: anywhere; }
-.request-link { width: 100%; text-align: left; white-space: normal; }
-#message { border: 1px solid #83ad9f; background: #e5f6ef; padding: 12px; border-radius: 8px; }
-#message.error { border-color: #a75545; background: #ffeae5; }
-footer.shell { padding-bottom: 24px; color: #48615e; font-size: .88rem; }
+
+[hidden] {
+  display: none !important;
+}
+
+/* General page appearance. */
+body {
+  margin: 0;
+  line-height: 1.6;
+  background: var(--light-grey);
+}
+
+.shell {
+  max-width: 1150px;
+  margin: auto;
+  padding: 0 22px;
+}
+
+/* Website header. */
+header {
+  background: var(--navy-blue);
+  color: var(--white);
+  padding: 35px 0;
+  border-bottom: 5px solid var(--forest-green);
+}
+
+.masthead,
+.section-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+h2,
+h3 {
+  color: var(--navy-blue);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--forest-green);
+}
+
+header .eyebrow {
+  color: var(--pale-green);
+}
+
+/* Main content area. */
+main.shell {
+  min-height: 58vh;
+  padding-top: 30px;
+  padding-bottom: 35px;
+}
+
+/* Content panels. */
+.panel {
+  background: var(--white);
+  border: 1px solid var(--medium-grey);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.signin {
+  max-width: 470px;
+  margin: 20px auto;
+}
+
+/* Arrange panels side by side when space permits. */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.layout > section {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.welcome {
+  margin-bottom: 22px;
+}
+
+.detail {
+  margin-top: 20px;
+  overflow-wrap: anywhere;
+  border-left: 5px solid var(--forest-green);
+}
+
+/* Form labels. */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 650;
+  color: var(--dark-grey);
+}
+
+/* Input fields and selection controls. */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+  border: 1px solid var(--medium-grey);
+  border-radius: 7px;
+  background: var(--white);
+  color: var(--text-black);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--forest-green);
+  box-shadow: 0 0 0 3px var(--pale-green);
+}
+
+/* Main action buttons. */
+button {
+  border: 0;
+  border-radius: 7px;
+  background: var(--forest-green);
+  color: var(--white);
+  padding: 11px 18px;
+  cursor: pointer;
+  font-weight: 650;
+  transition: background-color .2s, transform .2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--dark-green);
+  transform: translateY(-1px);
+}
+
+form button {
+  margin-top: 15px;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+  transform: none;
+}
+
+/* Secondary buttons. */
+.secondary {
+  background: var(--soft-blue);
+  color: var(--navy-blue);
+  border: 1px solid var(--medium-grey);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--navy-blue);
+  color: var(--white);
+}
+
+/* Keyboard accessibility. */
+:focus-visible {
+  outline: 3px solid var(--warning-orange);
+  outline-offset: 3px;
+}
+
+/* Request list appearance. */
+#request-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#request-list li {
+  padding: 14px 0;
+  border-top: 1px solid var(--medium-grey);
+  overflow-wrap: anywhere;
+}
+
+.request-link {
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+}
+
+/* System feedback messages. */
+#message {
+  border: 1px solid var(--forest-green);
+  background: var(--pale-green);
+  color: var(--dark-green);
+  padding: 13px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+#message.error {
+  border-color: #A75545;
+  background: #FCEAE6;
+  color: #a73726;
+}
+
+/* Website footer. */
+footer.shell {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  color: var(--dark-grey);
+  font-size: .88rem;
+  border-top: 1px solid var(--medium-grey);
+}
+
+/* Adapt the interface to smaller screens. */
+@media (max-width: 700px) {
+  .shell {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  header {
+    padding: 25px 0;
+  }
+
+  .masthead,
+  .section-top {
+    flex-wrap: wrap;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .layout > section {
+    width: 100%;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}

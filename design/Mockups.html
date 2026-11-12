@@ -1,67 +1,428 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transcript Tracker · Interface Mockups</title>
+
+  <title>Transcript Tracker - Interface Mockups</title>
+
   <link rel="stylesheet" href="../public/styles.css">
+
   <style>
-    .example { margin: 22px 0; }
-    .example h2 { margin-bottom: 16px; }
-    .example section { margin-bottom: 14px; }
-    .frame { padding: 22px; background: #f4f8f6; border: 1px solid #d1dfda; border-radius: 14px; }
-    nav a { display: inline-block; margin: 0 16px 6px 0; color: #17645b; }
+    :root {
+      --navy-blue: #17365D;
+      --forest-green: #287A55;
+      --pale-green: #E8F3ED;
+      --white: #FFFFFF;
+      --light-grey: #F2F4F7;
+      --medium-grey: #D9E0E7;
+      --dark-grey: #465362;
+      --text-black: #263238;
+      --soft-blue: #EAF0F8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--light-grey);
+      color: var(--text-black);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    .shell {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    header {
+      background-color: var(--navy-blue);
+      color: var(--white);
+      padding: 35px 0;
+      border-bottom: 5px solid var(--forest-green);
+    }
+
+    header h1 {
+      margin: 5px 0;
+      font-size: 32px;
+    }
+
+    .eyebrow {
+      color: var(--forest-green);
+      font-weight: bold;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    header .eyebrow {
+      color: var(--pale-green);
+    }
+
+    nav {
+      background-color: var(--white);
+      padding: 18px 25px;
+      margin: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--navy-blue);
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 28px;
+      padding: 5px 0;
+    }
+
+    nav a:hover {
+      color: var(--forest-green);
+      text-decoration: underline;
+    }
+
+    .example {
+      margin: 25px 0;
+    }
+
+    .example h2 {
+      color: var(--navy-blue);
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .frame {
+      padding: 28px;
+      background-color: var(--pale-green);
+      border: 1px solid var(--medium-grey);
+      border-radius: 14px;
+    }
+
+    .panel {
+      background-color: var(--white);
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--medium-grey);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .panel h3 {
+      color: var(--navy-blue);
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .signin {
+      max-width: 480px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      color: var(--dark-grey);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--medium-grey);
+      border-radius: 7px;
+      background-color: var(--white);
+      color: var(--text-black);
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: var(--forest-green);
+      color: var(--white);
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: var(--navy-blue);
+    }
+
+    .secondary {
+      background-color: var(--soft-blue);
+      color: var(--navy-blue);
+      border: 1px solid var(--medium-grey);
+    }
+
+    .secondary:hover {
+      background-color: var(--navy-blue);
+      color: var(--white);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-top h3 {
+      margin-bottom: 10px;
+    }
+
+    .request-link {
+      width: 100%;
+      text-align: left;
+    }
+
+    .detail {
+      border-left: 5px solid var(--forest-green);
+    }
+
+    ol {
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 25px;
+      text-align: center;
+      color: var(--dark-grey);
+      border-top: 1px solid var(--medium-grey);
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .frame {
+        padding: 16px;
+      }
+
+      nav a {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      header h1 {
+        font-size: 25px;
+      }
+
+      .section-top {
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header><div class="shell"><p class="eyebrow">SWE2106 · Interface design</p><h1>Transcript Tracker Mockups</h1></div></header>
+
+  <header>
+    <div class="shell">
+      <p class="eyebrow">SWE2106 · Interface Design</p>
+      <h1>Transcript Tracker</h1>
+      <p>Student Transcript Request and Management System</p>
+    </div>
+  </header>
+
   <main class="shell">
-    <nav aria-label="Mockup sections"><a href="#sign-in">Sign in</a><a href="#student">Student workspace</a><a href="#registrar">Registrar workspace</a></nav>
-    <!-- The example screens below use fixed sample data. -->
+
+    <nav aria-label="Mockup sections">
+      <a href="#sign-in">Sign in</a>
+      <a href="#student">Student workspace</a>
+      <a href="#registrar">Registrar workspace</a>
+    </nav>
+
+    <!-- Sign-in mockup -->
+
     <section class="example frame" id="sign-in">
+
       <h2>Sign in</h2>
+
       <section class="panel signin">
-        <h3>Account access</h3>
-        <label for="email">Email address</label><input id="email" type="email" value="alex.kato@std.must.ac.ug" readonly>
-        <label for="password">Password</label><input id="password" type="password" value="demo-example" readonly>
-        <p><button type="button">Sign in</button></p>
-        <p>New student? <button type="button" class="secondary">Create account</button></p>
+
+        <h3>Welcome Back</h3>
+        <p>Sign in to access your Transcript Tracker account.</p>
+
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          value="student@example.test"
+          readonly
+        >
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          value="demo-example"
+          readonly
+        >
+
+        <p>
+          <button type="button">Sign in</button>
+        </p>
+
       </section>
     </section>
-    <!-- Student view with a sample request and its history. -->
+
+    <!-- Student workspace mockup -->
+
     <section class="example frame" id="student">
-      <p class="eyebrow">Student workspace</p><h2>Alex Kato</h2>
-      <section class="panel"><h3>Registrar notifications</h3>
-        <p>Under review · Graduate programme application · Note: Request received for review.</p>
-      </section>
+
+      <p class="eyebrow">Student Workspace</p>
+      <h2>Welcome, Alex Kato</h2>
+
       <div class="layout">
-        <section class="panel"><h3>New request</h3>
-          <label for="purpose">Reason for requesting a transcript</label>
-          <textarea id="purpose" readonly rows="3">Graduate programme application</textarea>
-          <p><button type="button">Submit request</button></p>
+
+        <section class="panel">
+
+          <h3>Request a Transcript</h3>
+
+          <p>Provide the reason for requesting your academic transcript.</p>
+
+          <label for="purpose">Purpose of Request</label>
+
+          <textarea
+            id="purpose"
+            readonly
+            rows="3"
+          >Graduate programme application</textarea>
+
+          <p>
+            <button type="button">Submit Request</button>
+          </p>
+
         </section>
-        <section class="panel"><div class="section-top"><h3>My requests</h3><button type="button" class="secondary">Refresh</button></div>
-          <p><button type="button" class="request-link secondary">Under review · Graduate programme application</button></p>
+
+        <section class="panel">
+
+          <div class="section-top">
+            <h3>My Requests</h3>
+            <button type="button" class="secondary">
+              Refresh
+            </button>
+          </div>
+
+          <p>
+            <button type="button" class="request-link secondary">
+              Under Review - Graduate Programme Application
+            </button>
+          </p>
+
         </section>
+
       </div>
-      <section class="panel detail"><h3>Status history</h3><ol><li>Submitted · Alex Kato</li><li>Under review · Registrar Demo</li></ol></section>
-    </section>
-    <!-- Registrar view with a sample queue and review form. -->
-    <section class="example frame" id="registrar">
-      <p class="eyebrow">Registrar workspace</p><h2>Registrar Demo</h2>
-      <section class="panel">
-        <div class="section-top"><h3>Review queue</h3><button type="button" class="secondary">Refresh</button></div>
-        <p><button type="button" class="request-link secondary">Alex Kato · Under review · Graduate programme application</button></p>
-      </section>
+
       <section class="panel detail">
-        <h3>Request details</h3><p>Graduate programme application</p>
-        <ol><li>Submitted · Alex Kato</li><li>Under review · Registrar Demo</li></ol>
-        <label for="status">Next status</label><select id="status"><option>Ready for collection</option><option>Rejected</option></select>
-        <label for="note">Review note</label><textarea id="note" readonly rows="2">Ready for collection.</textarea>
-        <p><button type="button">Update status</button></p>
+
+        <h3>Request Status History</h3>
+
+        <ol>
+          <li>Submitted - Alex Kato</li>
+          <li>Under Review - Registrar Demo</li>
+        </ol>
+
       </section>
+
     </section>
+
+    <!-- Registrar workspace mockup -->
+
+    <section class="example frame" id="registrar">
+
+      <p class="eyebrow">Registrar Workspace</p>
+      <h2>Welcome, Registrar Demo</h2>
+
+      <section class="panel">
+
+        <div class="section-top">
+          <h3>Transcript Request Queue</h3>
+
+          <button type="button" class="secondary">
+            Refresh
+          </button>
+        </div>
+
+        <p>
+          <button type="button" class="request-link secondary">
+            Alex Kato - Under Review - Graduate Programme Application
+          </button>
+        </p>
+
+      </section>
+
+      <section class="panel detail">
+
+        <h3>Review Request Details</h3>
+
+        <p><strong>Student:</strong> Alex Kato</p>
+        <p><strong>Purpose:</strong> Graduate Programme Application</p>
+
+        <h3>Request Status History</h3>
+
+        <ol>
+          <li>Submitted - Alex Kato</li>
+          <li>Under Review - Registrar Demo</li>
+        </ol>
+
+        <label for="status">Select Next Status</label>
+
+        <select id="status">
+          <option>Ready for Collection</option>
+          <option>Rejected</option>
+        </select>
+
+        <label for="note">Review Note</label>
+
+        <textarea
+          id="note"
+          readonly
+          rows="2"
+        >Ready for collection.</textarea>
+
+        <p>
+          <button type="button">Update Status</button>
+        </p>
+
+      </section>
+
+    </section>
+
   </main>
-  <footer class="shell">SWE2106 E-tivity 5 · Interface mockups with fictional records</footer>
+
+  <footer class="shell">
+    SWE2106 E-tivity 5 · Transcript Tracker Interface Mockups
+    <br>
+    Demonstration using fictional student and registrar records.
+  </footer>
+
 </body>
 </html>
