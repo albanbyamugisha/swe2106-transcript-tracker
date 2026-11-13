@@ -1,0 +1,9 @@
+Navigating through the tab key on the keyboard works well and also having to go backwards using the shift + tab keys also works 
+Then to make the work more keyboard more visible we would have editted the css code that we have to 
+/*MAKING KEYBOARD FOCUS CLEARLY VISIBLE. */
+:focus-visible { 
+  outline: 3px solid #c97511;
+   outline-offset: 3px;
+  border-radius: 7px;
+ }
+but what we have works well regardless.
