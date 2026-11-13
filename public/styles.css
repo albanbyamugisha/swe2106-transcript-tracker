@@ -44,3 +44,11 @@ button:disabled { opacity: .55; cursor: wait; }
 #message { border: 1px solid #83ad9f; background: #e5f6ef; padding: 12px; border-radius: 8px; }
 #message.error { border-color: #a75545; background: #ffeae5; }
 footer.shell { padding-bottom: 24px; color: #48615e; font-size: .88rem; }
+   /* Phone layout: tighter padding, wrapping header rows, larger tap targets. */
+   @media (max-width: 480px) {
+     .shell { padding: 0 14px; }
+     .panel { padding: 16px; }
+     .masthead, .section-top { flex-wrap: wrap; }
+     button, .request-link { min-height: 44px; }
+   }
+
